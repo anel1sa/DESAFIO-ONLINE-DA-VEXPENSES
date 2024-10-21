@@ -2,7 +2,7 @@
 
 ## Tarefa 1 
 ### Descrição Técnica
-O código main.tf inicialmente cria e configura recurso na AWS. Define a região do provedor e cria variáveis que armazenam nomes.
+O código ``main.tf`` inicialmente cria e configura recurso na AWS. Define a região do provedor e cria variáveis que armazenam nomes.
 ```
  provider "aws" {
  region = "us-east-1"
@@ -22,7 +22,7 @@ type        = string
  default     = "SeuNome"
 }
 ```
-- Define as variáveis **_projeto_** e **_candidato_** que armazenam os nomes delas.
+- Define as variáveis ``projeto`` e ``candidato`` que armazenam os nomes delas.
 
 **Geração de chaves SSH**
 ```
@@ -31,7 +31,7 @@ algorithm = "RSA"
 rsa_bits  = 2048
 }
 ```
-- Gera chaves RSA e 2048 bits usando **_tls_private_key_** que é uma chave privada local
+- Gera chaves RSA e 2048 bits usando ``tls_private_key`` que é uma chave privada local
 ```
 resource "aws_key_pair" "ec2_key_pair" {
 key_name   = "${var.projeto}-${var.candidato}-key"
