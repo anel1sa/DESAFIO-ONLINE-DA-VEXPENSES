@@ -22,7 +22,7 @@ type        = string
  default     = "SeuNome"
 }
 ```
-- Define as variáveis ``projeto`` e ``candidato`` que armazenam os nomes delas.
+- Define as variáveis ``projeto`` e ``candidato`` que armazenam os nomes relevantes ao ambiente.
 
 **Geração de chaves SSH**
 ```
@@ -31,14 +31,14 @@ algorithm = "RSA"
 rsa_bits  = 2048
 }
 ```
-- Gera chaves RSA e 2048 bits usando ``tls_private_key`` que é uma chave privada local
+- Gera chaves RSA e 2048 bits usando ``tls_private_key``, criando uma chave privada local.
 ```
 resource "aws_key_pair" "ec2_key_pair" {
 key_name   = "${var.projeto}-${var.candidato}-key"
 public_key = tls_private_key.ec2_key.public_key_openssh
 }
 ```
-- Cria um ``aws_key_pair``que associa a chave pública gerada. A chave privada é usada depois para acesso SSH na instância EC2
+- Cria um ``aws_key_pair``que associa a chave pública gerada. A chave privada é utilizada posteriormente para acessar a instância EC2 via SSH.
 
 **VPC e Sub-rede**
 ```
@@ -98,7 +98,7 @@ resource "aws_route_table_association" "main_association" {
   route_table_id = aws_route_table.main_route_table.id
 }
 ```
-- Associa a tabela de rotas à sub-rede, permitindo que eça use o gateway de internet para acessa-lá.
+- Associa a tabela de rotas à sub-rede, permitindo que ela use o gateway de internet para acessá-la.
 
 **Grupo de Segurança**
 ```
@@ -150,7 +150,7 @@ data "aws_ami" "debian12" {
   owners = ["679593333241"]
 }
 ```
-- Busca a AMI mais recente do Debian 12, usando friltro para que seja uma imagem com o nome certo e o tipo de visualização hvm. É usada para criar a instância EC2.
+- Busca a AMI mais recente do Debian 12, usando filtro para que seja uma imagem com o nome certo e o tipo de visualização hvm. É usada para criar a instância EC2.
 
 **Instância EC2**
 ```
